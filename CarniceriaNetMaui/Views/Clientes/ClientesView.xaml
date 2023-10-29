@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarniceriaNetMaui.Views.ClientesView"
+             xmlns:viewmodel="clr-namespace:CarniceriaNetMaui.Viewmodels.Clientes"
+             Title="Clientes">
+    <ContentPage.BindingContext>
+        <viewmodel:ClientesViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <ActivityIndicator IsRunning="{Binding ActividadRealizandose}"/>
+        <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
+            <ImageButton Source="add" WidthRequest="50" HeightRequest="50"
+                         Command="{Binding AgregarClienteCommand}"
+                         Grid.Row="0" Grid.Column="0"
+                         Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ImageButton Source="pen" WidthRequest="50" HeightRequest="50" 
+                         Command="{Binding EditarClienteCommand}" 
+                         Grid.Row="0" Grid.Column="1" 
+                         Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ImageButton Source="delete" WidthRequest="50" HeightRequest="50"
+                         Command="{Binding EliminarClienteCommand}"
+                         Grid.Row="0" Grid.Column="2"
+                         Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <VerticalStackLayout>
+                    <ListView x:Name="ClientesListView"
+                              ItemsSource="{Binding Clientes}"
+                              SelectionMode="Single"
+                              IsPullToRefreshEnabled="False"
+                              RefreshCommand="{Binding ObtenerClienteCommand}"
+                              SelectedItem="{Binding ClienteSeleccionado}"
+                              HeightRequest="630">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Apellido_Nombre}" Detail="{Binding Dirección}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

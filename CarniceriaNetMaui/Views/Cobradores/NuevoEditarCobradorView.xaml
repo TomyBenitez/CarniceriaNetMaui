@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarniceriaNetMaui.Views.Cobradores.NuevoEditarCobradorView"
+             xmlns:viewModels="clr-namespace:CarniceriaNetMaui.Viewmodels.Cobradores"
+             Title="Nuevo/Editar Cobrador">
+    <ContentPage.BindingContext>
+        <viewModels:NuevoEditarCobradorViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Grid Margin="5" 
+              ColumnDefinitions="*,*,*,*,*" 
+              RowDefinitions="*,*,*,*,*,*,*,*"
+              RowSpacing="10">
+            <Label 
+                Text="Apellido y Nombre:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese Apellido y Nombre" Text="{Binding Apellido_Nombre}"
+                   Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3"/>
+            <Label 
+                Text="Dirección:"
+                x:Name="lblDirección"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese Dirección" Text="{Binding Dirección}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"/>
+            <Label 
+                Text="Teléfono:"
+                x:Name="lblTeléfono"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese Teléfono" Text="{Binding Teléfono}" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"/>
+            <Label 
+                Text="Usuario:"
+                x:Name="lblUsername"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese nombre de Usuario" Text="{Binding Username}" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"/>
+            <Label 
+                Text="Habilitar edición de contraseña:"
+                x:Name="lblPermitirPass"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"/>
+            <Switch IsToggled="{Binding PermitirEdicionContraseña}" Grid.Column="3" Grid.Row="4"/>
+            <Label 
+                Text="Contraseña:"
+                x:Name="lblPassword"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese la Contraseña" Text="{Binding Password}" IsEnabled="{Binding PermitirEdicionContraseña}" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="5"/>
+            <Label 
+                Text="Tipo Usuario:"
+                x:Name="lblTipoUsuarioEnum"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"/>
+            <Picker Title="Seleccionar Tipo" 
+                ItemsSource="{Binding RangosUsuarios}" 
+                ItemDisplayBinding="{Binding Nombre}" 
+                SelectedIndexChanged="myPickerOfTypeUser_SelectedIndexChanged"
+                Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3"/>
+            <Button Text="Guardar" WidthRequest="100" Command="{Binding GuardarCommand}" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3"/>
+            <Button Text="Cancelar" WidthRequest="100" Command="{Binding CancelarCommand}" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

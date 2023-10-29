@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:CarniceriaNetMaui.Views"
+       x:Class="CarniceriaNetMaui.MainPage"
+       Shell.FlyoutBehavior="Disabled">
+    <TabBar>
+        <ShellContent 
+                Title="Cobradores"
+                ContentTemplate="{DataTemplate views:CobradoresView}"
+                Route="Cobradores">
+            <ShellContent.Icon>
+                <FileImageSource File="transfer_man"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent 
+                Title="Clientes"
+                ContentTemplate="{DataTemplate views:ClientesView}"
+                Route="Clientes">
+            <ShellContent.Icon>
+                <FileImageSource File="user_icon"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent 
+                Title="Productos"
+                ContentTemplate="{DataTemplate views:ProductosView}"
+                Route="Productos">
+            <ShellContent.Icon>
+                <FileImageSource File="meat_icon"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent 
+                Title="Ventas"
+                ContentTemplate="{DataTemplate views:VentasView}"
+                Route="Ventas">
+            <ShellContent.Icon>
+                <FileImageSource File="carritodecompras.ico" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+</Shell>
+    

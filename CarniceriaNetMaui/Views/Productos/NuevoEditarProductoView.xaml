@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarniceriaNetMaui.Views.Productos.NuevoEditarProductoView"
+             xmlns:viewmodel="clr-namespace:CarniceriaNetMaui.Viewmodels.Productos"
+             Title="Nuevo/Editar Producto">
+    <ContentPage.BindingContext>
+        <viewmodel:NuevoEditarProductoViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Grid Margin="5" 
+          ColumnDefinitions="*,*,*,*,*" 
+          RowDefinitions="*,*,*,*"
+          RowSpacing="10">
+            <Label 
+            Text="Producto:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese nombre" Text="{Binding Nombre}"
+               Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3"/>
+            <Label 
+            Text="Monto:"
+            x:Name="lblMonto"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Ingrese Monto" Keyboard="Numeric" Text="{Binding Monto}" 
+                   Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"/>
+            <Button Text="Guardar" WidthRequest="100" Command="{Binding GuardarCommand}" 
+                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+            <Button Text="Cancelar" WidthRequest="100" Command="{Binding CancelarCommand}" 
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
