@@ -24,6 +24,14 @@ namespace CarniceriaNetMaui.Utils
             set => Preferences.Set(nameof(TypeUserSelection), value);
         }
 
+        const int loginCobradorId = 0;
+
+        public static int LoginCobradorId
+        {
+            get => Preferences.Get(nameof(LoginCobradorId), loginCobradorId);
+            set => Preferences.Set(nameof(LoginCobradorId), value);
+        }
+
         public static string ObtenerHashSha256(string textoAEncriptar)
         {
             SHA256 sha256Hash = SHA256.Create();

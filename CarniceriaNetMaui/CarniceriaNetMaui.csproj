@@ -30,6 +30,22 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 
@@ -75,21 +91,21 @@
 	  <MauiXaml Update="Views\Cobradores\NuevoEditarCobradorView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\NuevoEditarProductoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\ProductosView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Ventas\NuevoEditarVentaView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Ventas\VentasView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Viewmodels\Carritos\" />
-	  <Folder Include="Viewmodels\Ventas\" />
-	  <Folder Include="Views\Carritos\" />
 	</ItemGroup>
 
 </Project>

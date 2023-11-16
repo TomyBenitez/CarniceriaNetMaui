@@ -108,12 +108,14 @@ namespace CarniceriaNetMaui.Viewmodels.Clientes
 
         public async void ObtenerClientes(object obj)
         {
+            ActividadRealizandose = true;
             Clientes.Clear();
             var clientes = await clientesRepository.GetAllAsync();
             foreach (var cliente in clientes)
             {
                 Clientes.Add(cliente);
             }
+            ActividadRealizandose = false;
         }
     }
 }

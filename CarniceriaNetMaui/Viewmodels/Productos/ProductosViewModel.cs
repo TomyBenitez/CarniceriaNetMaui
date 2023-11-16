@@ -108,12 +108,14 @@ namespace CarniceriaNetMaui.Viewmodels.Productos
 
         public async void ObtenerProductos(object obj)
         {
+            ActividadRealizandose = true;
             Productos.Clear();
             var productos = await productosRepository.GetAllAsync();
             foreach (var producto in productos)
             {
                 Productos.Add(producto);
             }
+            ActividadRealizandose = false;
         }
     }
 }

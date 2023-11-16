@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +18,15 @@ namespace CarniceriaNetMaui.Models
         [Required]
         public int ClienteId { get; set; }
         public Cliente? Cliente { get; set; }
+        [NotMapped]
+        public string NombreCliente { get; set; }
         [Required]
-        public int CarritoId { get; set; }
-        public Carrito? Carrito { get; set; }
+        public int ProductoId { get; set; }
+        public Producto? Carrito { get; set; }
+        [NotMapped]
+        public string NombreProducto { get; set; }
+
+        public int Cantidad { get; set; }
         public DateTime Fecha { get; set; }
     }
 }

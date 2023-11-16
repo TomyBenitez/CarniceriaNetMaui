@@ -13,6 +13,7 @@ namespace CarniceriaNetMaui
         public Cobrador CobradorAEditar { get; set; }
         public Cliente ClienteAEditar { get; set; }
         public Producto ProductoAEditar { get; set; }
+        public Venta VentaAEditar { get; set; }
 
         public MiMensaje(string value) : base(value)
         {

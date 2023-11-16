@@ -8,7 +8,6 @@
         <viewModels:CobradoresViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <ActivityIndicator IsRunning="{Binding ActividadRealizandose}"/>
         <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
             <ImageButton Source="add" WidthRequest="50" HeightRequest="50"
                          Command="{Binding AgregarCobradorCommand}"
@@ -27,7 +26,8 @@
                     <ListView x:Name="CobradoresListView"
                               ItemsSource="{Binding Cobradores}"
                               SelectionMode="Single"
-                              IsPullToRefreshEnabled="False"
+                              IsPullToRefreshEnabled="True"
+                              IsRefreshing="{Binding ActividadRealizandose}"
                               RefreshCommand="{Binding ObtenerCobradoresCommand}"
                               SelectedItem="{Binding CobradorSeleccionado}"
                               HeightRequest="630">

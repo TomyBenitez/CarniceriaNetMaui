@@ -8,7 +8,6 @@
         <viewmodel:ProductosViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <ActivityIndicator IsRunning="{Binding ActividadRealizandose}"/>
         <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
             <ImageButton Source="add" WidthRequest="50" HeightRequest="50"
                          Command="{Binding AgregarProductoCommand}"
@@ -27,9 +26,10 @@
                     <ListView x:Name="ProductosListView"
                               ItemsSource="{Binding Productos}"
                               SelectionMode="Single"
-                              IsPullToRefreshEnabled="False"
+                              IsPullToRefreshEnabled="True"
                               RefreshCommand="{Binding ObtenerProductoCommand}"
                               SelectedItem="{Binding ProductoSeleccionado}"
+                              IsRefreshing="{Binding ActividadRealizandose}"
                               HeightRequest="630">
                         <ListView.ItemTemplate>
                             <DataTemplate>

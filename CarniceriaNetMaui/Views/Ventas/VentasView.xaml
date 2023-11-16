@@ -2,11 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarniceriaNetMaui.Views.VentasView"
+             xmlns:viewmodel="clr-namespace:CarniceriaNetMaui.Viewmodels.Ventas"
              Title="Ventas">
+    <ContentPage.BindingContext>
+        <viewmodel:VentasViewModel/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label 
-            Text="Lista de Ventas: "
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
+            <ImageButton Source="add" WidthRequest="50" HeightRequest="50"
+                     Command="{Binding AgregarVentaCommand}"
+                     Grid.Row="0" Grid.Column="0"
+                     Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ImageButton Source="pen" WidthRequest="50" HeightRequest="50" 
+                     Command="{Binding EditarVentaCommand}" 
+                     Grid.Row="0" Grid.Column="1" 
+                     Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ImageButton Source="delete" WidthRequest="50" HeightRequest="50"
+                     Command="{Binding EliminarVentaCommand}"
+                     Grid.Row="0" Grid.Column="2"
+                     Aspect="AspectFill" BackgroundColor="Violet" Padding="5" BorderColor="Black" BorderWidth="1" CornerRadius="5"/>
+            <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <ListView x:Name="VentasListView"
+                      ItemsSource="{Binding Ventas}"
+                      SelectionMode="Single"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding ObtenerVentasCommand}"
+                      SelectedItem="{Binding VentaSeleccionado}"
+                      IsRefreshing="{Binding ActividadRealizandose}"
+                      HeightRequest="630">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                                    <Label Text="{Binding NombreCliente}" FontSize="Medium" FontAttributes="Bold"
+                                           Grid.Row="0" Grid.Column="0"/>
+                                    <Label Text="{Binding NombreProducto}" FontSize="Small"
+                                           Grid.Row="0" Grid.Column="1"/>
+                                    <Label Text="{Binding Fecha}" FontSize="Small"
+                                           Grid.Row="1" Grid.Column="0"/>
+                                    <Label Text="{Binding Cantidad}" FontSize="Small"
+                                           Grid.Row="1" Grid.Column="1"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

@@ -108,12 +108,14 @@ namespace CarniceriaNetMaui.Viewmodels.Cobradores
 
         public async void ObtenerCobradores(object obj)
         {
+            ActividadRealizandose = true;
             Cobradores.Clear();
             var cobradores = await cobradoresRepository.GetAllAsync();
             foreach (var cobrador in cobradores)
             {
                 Cobradores.Add(cobrador);
             }
+            ActividadRealizandose = false;
         }
     }
 }
