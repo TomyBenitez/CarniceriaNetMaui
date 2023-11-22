@@ -33,15 +33,17 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*">
                                     <Label Text="{Binding NombreCliente}" FontSize="Medium" FontAttributes="Bold"
-                                           Grid.Row="0" Grid.Column="0"/>
+                                           Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
                                     <Label Text="{Binding NombreProducto}" FontSize="Small"
-                                           Grid.Row="0" Grid.Column="1"/>
+                                           Grid.Row="0" Grid.Column="2"/>
                                     <Label Text="{Binding Fecha}" FontSize="Small"
                                            Grid.Row="1" Grid.Column="0"/>
                                     <Label Text="{Binding Cantidad}" FontSize="Small"
                                            Grid.Row="1" Grid.Column="1"/>
+                                    <Label Text="{Binding MontoTotal}" FontSize="Small"
+                                           Grid.Row="1" Grid.Column="2"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

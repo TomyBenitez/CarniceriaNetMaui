@@ -109,14 +109,15 @@ namespace CarniceriaNetMaui.Viewmodels.Ventas
 
         private async void Guardar(object obj)
         {
+            var monto = listaProducto.FirstOrDefault(p => p.Id == productoId).Monto;
             cobradorId = Helper.LoginCobradorId;
             if (VentaEditado == null)
             {
-                Venta venta = await ventasRepository.AddAsync(clienteId, cobradorId, productoId, cantidad);
+                Venta venta = await ventasRepository.AddAsync(clienteId, cobradorId, productoId, cantidad, monto);
             }
             else
             {
-                await ventasRepository.UpdateAsync(VentaEditado.Id, clienteId, cobradorId, productoId, cantidad);
+                await ventasRepository.UpdateAsync(VentaEditado.Id, clienteId, cobradorId, productoId, cantidad, monto);
             }
             WeakReferenceMessenger.Default.Send(new MiMensaje("VolverAVentaView"));
         }

@@ -13,7 +13,7 @@ namespace CarniceriaNetMaui.Repositories
     {
         const string Url = "https://carniceriadbtomy.azurewebsites.net/api/ventas";
 
-        public async Task<Venta> AddAsync(int clienteId, int cobradorId, int productoId, int cantidad)
+        public async Task<Venta> AddAsync(int clienteId, int cobradorId, int productoId, int cantidad, decimal monto)
         {
             Venta venta = new Venta()
             {
@@ -21,7 +21,8 @@ namespace CarniceriaNetMaui.Repositories
                 CobradorId = cobradorId,
                 ProductoId = productoId,
                 Cantidad = cantidad,
-                Fecha = DateTime.Now
+                Fecha = DateTime.Now,
+                MontoTotal = monto
             };
             HttpClient client = Helper.ObtenerClienteHttp();
 
@@ -41,7 +42,7 @@ namespace CarniceriaNetMaui.Repositories
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> UpdateAsync(int id, int clienteId, int cobradorId, int productoId, int cantidad)
+        public async Task<bool> UpdateAsync(int id, int clienteId, int cobradorId, int productoId, int cantidad, decimal monto)
         {
             HttpClient client = Helper.ObtenerClienteHttp();
             Venta venta = new Venta()
@@ -51,7 +52,8 @@ namespace CarniceriaNetMaui.Repositories
                 CobradorId = cobradorId,
                 ProductoId = productoId,
                 Cantidad = cantidad,
-                Fecha = DateTime.Now
+                Fecha = DateTime.Now,
+                MontoTotal = monto
             };
             var response = await client.PutAsync(Url + "/" + id, new StringContent(JsonConvert.SerializeObject(venta), Encoding.UTF8, "application/json"));
             return response.IsSuccessStatusCode;
